@@ -10,10 +10,10 @@
                 <a href="add.php" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-plus"></i>Tambah pegawai</a>
             </div>
         </h4>
-        <div>
+        <div style="margin-bottom:20px;">
             <form class="form-inline" action="" method="post">
                 <div class="form-group">
-                    <input type="text" name="pencarian" class="form-control" placeholder="Pencarian"> 
+                    <input type="text" name="pencarian" class="form-control" placeholder="pencarian"> 
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -37,12 +37,12 @@
                         <th>JK</th>
                         <th>STATUS</th>
                         <th>KET</th>
-                        <th><i class="glyphicon glyphicon-cog"></i></th>
+                        <th><i class="glyphicon glyphicon-cog"></i>Settings</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                $batas = 10;    
+                $batas = 2;    
                 $hal = @$_GET['hal'];
                 if(empty($hal)){
                     $posisi = 0;
@@ -54,12 +54,12 @@
                 if($_SERVER['REQUEST_METHOD'] == "POST"){
                     $pencarian = trim(mysqli_real_escape_string($con, $_POST['pencarian']));
                     if($pencarian != ''){
-                        $sql = "SELECT * FROM data_pegawai WHERE Nama LIKE '%pencarian%'";
+                        $sql = "SELECT * FROM data_pegawai WHERE Nama LIKE '%$pencarian%'";
                         $query = $sql;
                         $queryJml = $sql;
                     } else {
                         $query = "SELECT * FROM data_pegawai LIMIT $posisi, $batas";
-                        $queryJml ="SELECT * FROM data_pegawai";
+                        $queryJml = "SELECT * FROM data_pegawai";
                         $no = $posisi + 1;
                     }
                 } else {
@@ -67,9 +67,9 @@
                     $queryJml ="SELECT * FROM data_pegawai";
                     $no = $posisi + 1;
                 }
-                $sql_data_pegawai = mysqli_query($con, $query) or die (mysqli_error($con));
-                if(mysqli_num_rows($sql_data_pegawai) > 0){
-                    while($data = mysqli_fetch_array($sql_data_pegawai)){?>
+                $sql_pegawai = mysqli_query($con, $query) or die (mysqli_error($con));
+                if(mysqli_num_rows($sql_pegawai) > 0){
+                    while($data = mysqli_fetch_array($sql_pegawai)){?>
                     <tr>
                         <td><?=$no++?></td>
                         <td><?=data['NIP']?></td>
@@ -86,13 +86,14 @@
                         <td><?=data['Keterangan']?></td>
                         <td>
                         <a href="edit.php?id=<?=data['NIP']?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit" ></i></a>
-                        <a href="del.php?id=<?=data['NIP']?>" onclick="return confirm('Yakin akan menghapus data?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash" ></i></a>
+                        <a href="edit.php?id=<?=data['NIP']?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-user" ></i></a>
+                        <a href="del.php?id=<?=data['NIP']?>" onclick="return confirm('<?= $_SESSION['user']?> ,Yakin anda akan menghapusnya ?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash" ></i></a>
                         </td>
                     </tr>
                     <?php
                     }
                 } else {
-                    echo "<tr><td colspan=\"4\" align=\"center\"> Data yang anda cari tidak ditemukan </td></tr>";
+                    echo "<tr><td colspan=\"14\" align=\"center\"> Data yang anda cari tidak ditemukan </td></tr>";
                 }
                 ?>
                 </tbody>
@@ -101,34 +102,33 @@
         <?php
         if($_POST['pencarian'] == ''){?>
             <div style="float:left;">
-            <?php
-            $jml = mysqli_num_rows(mysqli_query($con, $queryJml));
-            echo"Jumlah Data : <b>$jml</b>";
-            ?>
+                <?php
+                 $jml = mysqli_num_rows(mysqli_query($con, $queryJml));
+                 echo  "Jumalah Data : <b>$jml</b>";
+                ?>
             </div>
             <div style="float:right;">
-            <ul class="pagination pagination-sm" style="margin:0">
-            <?php
-            $jml_hal = ceil($jml / $batas);
-            for ($i=1; $i <=$jml_hal; $i++){
-                if ($i !=$hal){
-                    echo "<li><a herf=\"?hal=$i\">$i</a></li>";
-                } else {
-                    echo "<li class=\"active\"><a>$i</a></li>";
+               <ul class="pagination pagination-sm" style="margin:0">
+                <?php
+                $jml_hal = ceil($jml / $batas);
+                for ($i=1; $i <= $jml_hal; $i++){
+                    if ($i != $hal){
+                        echo "<li><a href=\"?hal=$i\">$i</a></li>";
+                    } else {
+                        echo "<li class=\"active\"><a>$i</a></li>";
+                    }
                 }
-            }
-            ?>
-        </ul>
-    </div>
-        <?php
+                ?>
+            </ul>
+            </div>
+            <?php
         } else {
             echo "<div style=\"float:left;\">";
             $jml = mysqli_num_rows(mysqli_query($con, $queryJml));
-            echo  "Jumlah Data : <b>$jml</b>";
+            echo  "Data Hasil Pencarian : <b>$jml</b>";
             echo " </div>";
         }
         ?>
-    </div>
     <br>
 
     <div class="row">

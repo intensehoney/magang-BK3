@@ -28,30 +28,33 @@ if(!isset($_SESSION['user'])){
     <script src="<?=base_url('assets/jsbootstrap.min.js')?>"></script>
 
     <div id="wrapper">
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" style="background:aliceblue;">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#"><img src="../picture/logo_kemnaker.jpg" width="40px" alt="">
                     <span class="text-primary"><b>BK3 JAKARTA
                     </b></span></a>
                 </li>
-                <li>
-                    <a href="<?=base_url('dashboard')?>"><i class="fa fa-dashboard fa-fw"></i> DASHBOARD</a>
+                <b>
+                <li style="margin-top:20px;">
+                    <a href="<?=base_url('dashboard')?>"> <span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</a>
                 </li>
                 <li>
-                    <a href="<?=base_url('pegawai/data.php')?>">TABLE PEGAWAI</a>
+                    <a href="<?=base_url('pegawai/data.php')?>"> <span class="glyphicon glyphicon-list"></span> TABLE PEGAWAI</a>
                 </li>
                 <li>
-                    <a href="#">PROFIL PEGAWAI</a>
+                    <a href="#"> <span class="glyphicon glyphicon-user"></span>PROFIL PEGAWAI</a>
                 </li>
                 <li>
-                    <a href="#">KETERANGAN</a>
+                    <a href="#"> <span class="glyphicon glyphicon-cog"></span>KETERANGAN</a>
                 </li>
                 <li>
-                    <a href="<?=base_url('auth/logout.php')?>"><span class="text-danger"> LOG OUT</span></a>
+                    <a href="<?=base_url('auth/logout.php')?>"onclick="return confirm('Apakah anda akan keluar, <?= $_SESSION['user']?> ?')" class="text-danger" style="color:red;"><span class="glyphicon glyphicon-chevron-left"></span> LOG OUT</a>
                 </li>
+                </b>
             </ul>
         </div>
       
         <div id="page-content-wrapper">
             <div class="container-fluid">
+            

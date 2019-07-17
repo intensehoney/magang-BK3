@@ -6,43 +6,42 @@
         <h1><b>Dashboard</b></h1>
         <h2>Selamat datang <mark><b><?= $_SESSION['user']?></b></mark> didaftar nominatif pegawai Balai Keselamatan dan Kesehatan Kerja </h2>
             <p> <code>#Safety-Is-My-Life</code>.</p>
-            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">ZOOM</a>
         </div>
     </div>
     
     <div class="panel-body">
-                            <ul class="timeline">
-                                <li>
-                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+        <ul class="timeline">
+            <li>
+                <div class="timeline-badge"><i class="fa fa-check"></i>
+                </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">Timeline Event</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-time"></i> 11 hours ago via Twitter</small>
+                                </p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                        </div>
+                    </div>
+            </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
+                        </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title">Timeline Event</h4>
                                     </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Timeline Event</h4>
-                                            <p>
-                                                <small class="text-muted"><i class="fa fa-time"></i> 11 hours ago via Twitter</small>
-                                            </p>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                        </div>
+                                    <div class="timeline-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
                                     </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Timeline Event</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-badge danger"><i class="fa fa-credit-card"></i>
-                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="timeline-badge danger"><i class="fa fa-credit-card"></i>
+                                </div>
                                     <div class="timeline-panel">
                                         <div class="timeline-heading">
                                             <h4 class="timeline-title">Timeline Event</h4>
@@ -116,5 +115,13 @@
                                 </li>
                             </ul>
                         </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">ZOOM</a>
+            </div>
+        </div>
+
 <?php include_once('../_footer.php');
 ?>

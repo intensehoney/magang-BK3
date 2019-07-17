@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                 <?php
-                $batas = 2;    
+                $batas = 10;    
                 $hal = @$_GET['hal'];
                 if(empty($hal)){
                     $posisi = 0;
@@ -72,22 +72,21 @@
                     while($data = mysqli_fetch_array($sql_pegawai)){?>
                     <tr>
                         <td><?=$no++?></td>
-                        <td><?=data['NIP']?></td>
-                        <td><?=data['Nama']?></td>
-                        <td><?=data['Tempat_Lahir,Tanggal_Lahir']?></td>
-                        <td><?=data['Pangkat']?></td>
-                        <td><?=data['Golongan']?></td>
-                        <td><?=data['TMT']?></td>
-                        <td><?=data['Jabatan']?></td>
-                        <td><?=data['Pendidikan_Tertinggi']?></td>
-                        <td><?=data['Agama']?></td>
-                        <td><?=data['Jk']?></td>
-                        <td><?=data['Status']?></td>
-                        <td><?=data['Keterangan']?></td>
+                        <td><?=$data['NIP']?></td>
+                        <td><?=$data['Nama']?></td>
+                        <td><?=$data['Tempat_Lahir'.'Tanggal_Lahir']?></td>
+                        <td><?=$data['Pangkat']?></td>
+                        <td><?=$data['Golongan']?></td>
+                        <td><?=$data['TMT']?></td>
+                        <td><?=$data['Jabatan']?></td>
+                        <td><?=$data['Pendidikan_Tertinggi']?></td>
+                        <td><?=$data['Agama']?></td>
+                        <td><?=$data['Jk']?></td>
+                        <td><?=$data['Status']?></td>
+                        <td><?=$data['Keterangan']?></td>
                         <td>
-                        <a href="edit.php?id=<?=data['NIP']?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit" ></i></a>
-                        <a href="edit.php?id=<?=data['NIP']?>" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-user" ></i></a>
-                        <a href="del.php?id=<?=data['NIP']?>" onclick="return confirm('<?= $_SESSION['user']?> ,Yakin anda akan menghapusnya ?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash" ></i></a>
+                        <a href="edit.php?id=<?=$data['NIP']?>" class="btn btn-warning btn-xs"><i class="glyphicon glyphicon-edit" ></i></a>
+                        <a href="del.php?id=<?=$data['NIP']?>" onclick="return confirm('<?= $_SESSION['user']?> ,Yakin anda akan menghapusnya ?')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash" ></i></a>
                         </td>
                     </tr>
                     <?php
